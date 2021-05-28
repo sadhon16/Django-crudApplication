@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container">
+<div class="head mt-auto" >
+<center><h1>CRUD</h1></center>
+</div>
+<div class="col-sm-4 float-left">
+<form action="" method="post" class="col-sm-8">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="submit" class="btn btn-primary">
+</form>
+</div>
+
+
+
+<div class="col-sm-8 float-left">
+<table border="1px solid" class="table">
+
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {% for x in login %}
+    <tr>
+        <td>{{x.FirstName}}</td>
+        <td>{{x.LastName}}</td>
+        <td>{{x.Email}}</td>
+        <td><a href="{% url 'Update' x.id %}" class="btn btn-warning btn-sm">update</a></td>
+        <td><a href="{% url 'Delete' x.id %}" class="btn btn-danger btn-sm">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</body>
+</html>
