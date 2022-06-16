@@ -53,5 +53,6 @@ def Delete(request,id):
     dl.delete()
     return HttpResponseRedirect('/')
 
+#add comment
 
 
